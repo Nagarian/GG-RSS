@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8B623C041AD067B500C1CEDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B623C031AD067B500C1CEDC /* AppDelegate.swift */; };
-		8B623C061AD067B500C1CEDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B623C051AD067B500C1CEDC /* ViewController.swift */; };
 		8B623C091AD067B500C1CEDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B623C071AD067B500C1CEDC /* Main.storyboard */; };
-		8B623C0B1AD067B500C1CEDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B623C0A1AD067B500C1CEDC /* Images.xcassets */; };
+		8B623C0B1AD067B500C1CEDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B623C0A1AD067B500C1CEDC /* Assets.xcassets */; };
 		8B623C0E1AD067B500C1CEDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B623C0C1AD067B500C1CEDC /* LaunchScreen.xib */; };
 		8B623C1A1AD067B500C1CEDC /* Gamergen_RSSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B623C191AD067B500C1CEDC /* Gamergen_RSSTests.swift */; };
 		8B623C271AD06DAC00C1CEDC /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B623C261AD06DAC00C1CEDC /* Downloader.swift */; };
@@ -33,9 +32,8 @@
 		8B623BFE1AD067B500C1CEDC /* Gamergen RSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gamergen RSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B623C021AD067B500C1CEDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B623C031AD067B500C1CEDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B623C051AD067B500C1CEDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B623C081AD067B500C1CEDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8B623C0A1AD067B500C1CEDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8B623C0A1AD067B500C1CEDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B623C0D1AD067B500C1CEDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8B623C131AD067B500C1CEDC /* Gamergen RSSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gamergen RSSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B623C181AD067B500C1CEDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,16 +83,14 @@
 		8B623C001AD067B500C1CEDC /* Gamergen RSS */ = {
 			isa = PBXGroup;
 			children = (
-				8B623C231AD0697600C1CEDC /* Connector */,
+				8B623C0A1AD067B500C1CEDC /* Assets.xcassets */,
+				8B623C301AD0A3A500C1CEDC /* Models */,
+				8B623C2F1AD0A39800C1CEDC /* Controllers */,
+				8B623C321AD0A41800C1CEDC /* Utils */,
 				8B623C031AD067B500C1CEDC /* AppDelegate.swift */,
-				8B623C051AD067B500C1CEDC /* ViewController.swift */,
 				8B623C071AD067B500C1CEDC /* Main.storyboard */,
-				8B623C0A1AD067B500C1CEDC /* Images.xcassets */,
 				8B623C0C1AD067B500C1CEDC /* LaunchScreen.xib */,
 				8B623C011AD067B500C1CEDC /* Supporting Files */,
-				8B623C281AD0765800C1CEDC /* Extension.swift */,
-				8B623C2A1AD0769700C1CEDC /* GGCategories.swift */,
-				8B623C2C1AD0772900C1CEDC /* GGCategory.swift */,
 			);
 			path = "Gamergen RSS";
 			sourceTree = "<group>";
@@ -130,6 +126,31 @@
 				8B623C261AD06DAC00C1CEDC /* Downloader.swift */,
 			);
 			name = Connector;
+			sourceTree = "<group>";
+		};
+		8B623C2F1AD0A39800C1CEDC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8B623C301AD0A3A500C1CEDC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B623C2A1AD0769700C1CEDC /* GGCategories.swift */,
+				8B623C2C1AD0772900C1CEDC /* GGCategory.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8B623C321AD0A41800C1CEDC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8B623C231AD0697600C1CEDC /* Connector */,
+				8B623C281AD0765800C1CEDC /* Extension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,7 +235,7 @@
 			files = (
 				8B623C091AD067B500C1CEDC /* Main.storyboard in Resources */,
 				8B623C0E1AD067B500C1CEDC /* LaunchScreen.xib in Resources */,
-				8B623C0B1AD067B500C1CEDC /* Images.xcassets in Resources */,
+				8B623C0B1AD067B500C1CEDC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +254,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B623C2B1AD0769700C1CEDC /* GGCategories.swift in Sources */,
-				8B623C061AD067B500C1CEDC /* ViewController.swift in Sources */,
 				8B623C041AD067B500C1CEDC /* AppDelegate.swift in Sources */,
 				8B623C271AD06DAC00C1CEDC /* Downloader.swift in Sources */,
 				8B623C291AD0765800C1CEDC /* Extension.swift in Sources */,
