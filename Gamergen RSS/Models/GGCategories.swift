@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct GGCategories {
-    let array: [GGCategory]
+    var array: [GGCategory]
     
     init() {
         array = [GGCategory]()

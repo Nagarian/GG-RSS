@@ -7,21 +7,44 @@
 //
 
 import Foundation
+import SWXMLHash
 
 internal class Downloader {
     private let request : NSURLRequest
+    private let category: GGCategory
     
     init (categorie : GGCategory) {
-        var url = "http://www.gamergen.com/rss"
+        var uri = "http://www.gamergen.com/rss"
         if (categorie.name != "Global") {
-            url += "/" + categorie.tag
+            uri += "/" + categorie.tag
         }
         
-        request = NSURLRequest(URL: NSURL(string: url)!)
+        request = NSURLRequest(URL: NSURL(string: uri)!)
+        self.category = categorie
     }
     
-    internal func download(callback: (String, String?) -> Void) {
-        httpGet(request, callback)
+    internal func download(callback: (GGArticles?, String?) -> Void) {
+        httpGet(request, callback: {(data, error) in
+            if error != nil {
+                callback(nil, error)
+                return
+            }
+            
+            let xml = SWXMLHash.parse(data)
+            
+            var articles = GGArticles(title: xml["rss"]["channel"]["item"].element!.text!, category : self.category)
+            
+            for item in xml["rss"]["channel"]["item"] {
+                articles.array.append(GGArticle(
+                    title : item["title"].element!.text!,
+                    link : NSURL(string: item["link"].element!.text!)!,
+                    description : item["description"].element!.text!,
+                    publicationDate : item["pubdate"].element!.text!,
+                    imagePath : NSURL(string: item["enclosure"].element!.attributes["url"]!)!))
+            }
+            
+            callback(articles, nil)
+        })
     }
     
     private func httpGet(request: NSURLRequest!, callback: (String, String?) -> Void) {
@@ -33,9 +56,10 @@ internal class Downloader {
             } else {
                 var result = NSString(data: data, encoding:
                     NSASCIIStringEncoding)!
-                callback(result, nil)
+                callback(result as String, nil)
             }
         }
+        
         task.resume()
     }
 }
