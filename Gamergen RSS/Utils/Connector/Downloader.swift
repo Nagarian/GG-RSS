@@ -32,14 +32,14 @@ internal class Downloader {
             
             let xml = SWXMLHash.parse(data)
             
-            var articles = GGArticles(title: xml["rss"]["channel"]["item"].element!.text!, category : self.category)
+            var articles = GGArticles(title: xml["rss"]["channel"]["title"].element!.text!, category : self.category)
             
             for item in xml["rss"]["channel"]["item"] {
-                articles.array.append(GGArticle(
+                articles.feed.append(GGArticle(
                     title : item["title"].element!.text!,
                     link : NSURL(string: item["link"].element!.text!)!,
                     description : item["description"].element!.text!,
-                    publicationDate : item["pubdate"].element!.text!,
+                    publicationDate : item["pubDate"].element!.text!,
                     imagePath : NSURL(string: item["enclosure"].element!.attributes["url"]!)!))
             }
             

@@ -9,10 +9,10 @@
 import Foundation
 
 struct GGArticle {
-    var title : NSString
+    var title : String
     var link : NSURL
-    var description : NSString
-    var publicationDate : NSString
+    var description : String
+    var publicationDate : String
     var imagePath : NSURL
 }
 

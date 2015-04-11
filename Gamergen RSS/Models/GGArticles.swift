@@ -9,12 +9,12 @@
 import Foundation
 
 struct GGArticles {
-    var array : [GGArticle]
+    var feed : [GGArticle]
     let title : String
     let category : GGCategory
     
     init(title : String, category : GGCategory) {
-        self.array = [GGArticle]()
+        self.feed = [GGArticle]()
         self.title = title
         self.category = category
     }
