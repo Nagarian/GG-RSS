@@ -8,19 +8,45 @@
         <scene sceneID="yYG-H6-NRx">
             <objects>
                 <tableViewController title="Gamergen RSS" id="1Rn-aW-fVE" customClass="ArticlesFeedController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Io-oW-4bb">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Io-oW-4bb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Default Cell View" rowHeight="107" id="OMR-bX-97X" customClass="ArticleTableViewCell" customModule="Gamergen_RSS" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCustomCellGG" rowHeight="126" id="OMR-bX-97X" customClass="ArticleTableViewCell" customModule="Gamergen_RSS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OMR-bX-97X" id="x2V-cc-hjI">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="22/10/2012 12:12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXd-ic-8g4">
+                                            <rect key="frame" x="119" y="35" width="249" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is an article description not really too long" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bih-PT-wKw">
+                                            <rect key="frame" x="119" y="50" width="193" height="67"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4T-9H-GgY">
+                                            <rect key="frame" x="8" y="35" width="103" height="67"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is an article title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVl-2L-o8p">
+                                            <rect key="frame" x="8" y="0.0" width="449" height="27"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="1Uz-ve-O9l" kind="show" id="V1c-5l-Hu7"/>
+                                    <outlet property="dateLabel" destination="FXd-ic-8g4" id="r0m-LQ-7zJ"/>
+                                    <outlet property="descriptionLabel" destination="Bih-PT-wKw" id="1pb-02-xDe"/>
+                                    <outlet property="imageElement" destination="C4T-9H-GgY" id="h7t-al-38K"/>
+                                    <outlet property="titleLabel" destination="xVl-2L-o8p" id="0Gb-79-Qeu"/>
+                                    <segue destination="1Uz-ve-O9l" kind="show" identifier="showDetail" id="V1c-5l-Hu7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -37,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="-422" y="220"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Article View Controller-->
         <scene sceneID="YNB-AD-ZV1">
             <objects>
-                <viewController id="1Uz-ve-O9l" sceneMemberID="viewController">
+                <viewController id="1Uz-ve-O9l" customClass="DetailArticleViewController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5AR-fK-3Ig"/>
                         <viewControllerLayoutGuide type="bottom" id="2VU-yB-6wI"/>
@@ -57,6 +83,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="webView" destination="2Cw-ff-axS" id="I4Q-Cd-I6s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvU-Kk-i0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
