@@ -55,7 +55,7 @@ internal class Downloader {
                 callback("", error.localizedDescription)
             } else {
                 var result = NSString(data: data, encoding:
-                    NSASCIIStringEncoding)!
+                    NSUTF8StringEncoding)!
                 callback(result as String, nil)
             }
         }
