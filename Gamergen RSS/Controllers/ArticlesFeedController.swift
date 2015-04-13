@@ -16,6 +16,7 @@ class ArticlesFeedController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         downloader = Downloader(categorie: GGCategories.getCategoryByName("Global")!)
         downloader?.download({ (feed, error) -> Void in
             if error != nil {
@@ -59,11 +60,10 @@ class ArticlesFeedController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Default Cell View", forIndexPath: indexPath) as! ArticleTableViewCell
-        //let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Default Cell View")
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCustomCellGG", forIndexPath: indexPath) as! ArticleTableViewCell
+       // let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Default Cell View")
+       
         cell.Article = articlesFeed?.feed[indexPath.item]
-        cell.initialize()
         
         return cell
     }
@@ -110,21 +110,13 @@ class ArticlesFeedController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        /*if segue.identifier == "add" {
-            let destinationVC = segue.destinationViewController as AddViewController
-            
-            destinationVC.restos = restaurants
-        }
         
-        if segue.identifier == "detail" {
-            let destinationVC = segue.destinationViewController as DetailViewController
+        if segue.identifier == "showDetail" {
+            let argument = sender as! ArticleTableViewCell
+            let destinationVC = segue.destinationViewController as! DetailArticleViewController
             
-            var index = tableView.indexPathForSelectedRow()?.item
-            
-            destinationVC.resto = restaurants.restoAtIndex(index!)
-        }*/
+            destinationVC.Article = argument.Article
+        }
     }
-
-    
 }
 		

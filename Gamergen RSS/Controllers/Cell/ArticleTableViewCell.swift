@@ -22,18 +22,17 @@ class ArticleTableViewCell: UITableViewCell {
         }
         
         set(value) {
-            self.article = value        }
-    }
-    
-    override func layoutSubviews() {
+            self.article = value
+            initialize()
+        }
     }
     
     internal func initialize() {
-        
-        titleLabel.text = article!.title
-        descriptionLabel.text = article?.description
-        dateLabel.text = article?.publicationDate
-        imageElement.image = UIImage(data: NSData(contentsOfURL: article!.imagePath)!)
+            
+        self.titleLabel.text = self.article!.title
+        self.descriptionLabel.text = self.article?.description
+        self.dateLabel.text = self.article?.publicationDate
+        self.imageElement.image = UIImage(data: NSData(contentsOfURL: self.article!.imagePath)!)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

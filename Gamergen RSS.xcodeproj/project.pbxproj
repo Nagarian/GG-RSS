@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BA785713123C6AEF3EE616A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 476659DC381C6739DEA12611 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8B0AD7AA1ADBA77700AD103F /* DetailArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0AD7A91ADBA77700AD103F /* DetailArticleViewController.swift */; };
 		8B3823A31AD3D32C00AC4359 /* GGArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3823A21AD3D32C00AC4359 /* GGArticle.swift */; };
 		8B3823A51AD3D47600AC4359 /* GGArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3823A41AD3D47600AC4359 /* GGArticles.swift */; };
 		8B623C041AD067B500C1CEDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B623C031AD067B500C1CEDC /* AppDelegate.swift */; };
@@ -21,7 +22,6 @@
 		8B623C2D1AD0772900C1CEDC /* GGCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B623C2C1AD0772900C1CEDC /* GGCategory.swift */; };
 		8BF67B3B1AD977E700729710 /* ArticlesFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF67B3A1AD977E700729710 /* ArticlesFeedController.swift */; };
 		8BFDBB7A1AD99ADF00CF890F /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFDBB781AD99ADF00CF890F /* ArticleTableViewCell.swift */; };
-		8BFDBB7B1AD99ADF00CF890F /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFDBB791AD99ADF00CF890F /* ArticleTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,7 @@
 		281B49DDE3102059E2459BB5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		476659DC381C6739DEA12611 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DA4BB679320E5DA0544BF45 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8B0AD7A91ADBA77700AD103F /* DetailArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailArticleViewController.swift; sourceTree = "<group>"; };
 		8B3823A21AD3D32C00AC4359 /* GGArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GGArticle.swift; sourceTree = "<group>"; };
 		8B3823A41AD3D47600AC4359 /* GGArticles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GGArticles.swift; sourceTree = "<group>"; };
 		8B623BFE1AD067B500C1CEDC /* Gamergen RSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gamergen RSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +56,6 @@
 		8B623C2C1AD0772900C1CEDC /* GGCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GGCategory.swift; sourceTree = "<group>"; };
 		8BF67B3A1AD977E700729710 /* ArticlesFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesFeedController.swift; sourceTree = "<group>"; };
 		8BFDBB781AD99ADF00CF890F /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleTableViewCell.swift; path = Cell/ArticleTableViewCell.swift; sourceTree = "<group>"; };
-		8BFDBB791AD99ADF00CF890F /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ArticleTableViewCell.xib; path = Cell/ArticleTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +159,7 @@
 			children = (
 				8BFDBB7C1AD99AEE00CF890F /* Cell */,
 				8BF67B3A1AD977E700729710 /* ArticlesFeedController.swift */,
+				8B0AD7A91ADBA77700AD103F /* DetailArticleViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				8BFDBB781AD99ADF00CF890F /* ArticleTableViewCell.swift */,
-				8BFDBB791AD99ADF00CF890F /* ArticleTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -283,7 +283,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFDBB7B1AD99ADF00CF890F /* ArticleTableViewCell.xib in Resources */,
 				8B623C091AD067B500C1CEDC /* Main.storyboard in Resources */,
 				8B623C0E1AD067B500C1CEDC /* LaunchScreen.xib in Resources */,
 				8B623C0B1AD067B500C1CEDC /* Assets.xcassets in Resources */,
@@ -360,6 +359,7 @@
 				8B623C271AD06DAC00C1CEDC /* Downloader.swift in Sources */,
 				8B3823A51AD3D47600AC4359 /* GGArticles.swift in Sources */,
 				8B623C291AD0765800C1CEDC /* Extension.swift in Sources */,
+				8B0AD7AA1ADBA77700AD103F /* DetailArticleViewController.swift in Sources */,
 				8B623C2D1AD0772900C1CEDC /* GGCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
