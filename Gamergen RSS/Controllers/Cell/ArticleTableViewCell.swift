@@ -27,6 +27,16 @@ class ArticleTableViewCell: UITableViewCell {
         }
     }
     
+    internal var color : UIColor {
+        get {
+            return titleLabel.tintColor
+        }
+        
+        set(value) {
+            titleLabel.textColor = value
+        }
+    }
+    
     internal func initialize() {
             
         self.titleLabel.text = self.article!.title

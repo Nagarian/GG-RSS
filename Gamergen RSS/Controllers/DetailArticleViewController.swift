@@ -30,6 +30,7 @@ class DetailArticleViewController: UIViewController {
         
         if article != nil {
             webView.loadRequest(NSURLRequest(URL: self.article!.link))
+            self.title = self.article?.title
         }
         
         // Do any additional setup after loading the view.

@@ -10,14 +10,17 @@
 import UIKit
 
 class ArticlesFeedController: UITableViewController {
-
-    var articlesFeed : GGArticles?
-    var downloader : Downloader?
+    
+    private var articlesFeed : GGArticles?
+    private var downloader : Downloader?
+    
+    var category : GGCategory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        downloader = Downloader(categorie: GGCategories.getCategoryByName("Global")!)
+        self.category = GGCategories.getCategoryByName("Global")
+        downloader = Downloader(categorie: category!)
         downloader?.download({ (feed, error) -> Void in
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -33,6 +36,14 @@ class ArticlesFeedController: UITableViewController {
             }
         })
         
+        /*self.navigationController?.navigationBar.barTintColor = UIColor(netHex: 0x1D1D1D)
+        self.navigationController?.navigationBar.tintColor = category?.color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : category!.color]*/
+        
+        self.navigationController?.navigationBar.barTintColor = category?.color
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+            
         self.navigationController?.popViewControllerAnimated(true)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -64,6 +75,7 @@ class ArticlesFeedController: UITableViewController {
        // let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Default Cell View")
        
         cell.Article = articlesFeed?.feed[indexPath.item]
+        cell.color = category!.color
         
         return cell
     }
