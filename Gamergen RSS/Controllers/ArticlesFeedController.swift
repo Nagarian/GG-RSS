@@ -14,36 +14,14 @@ class ArticlesFeedController: UITableViewController {
     private var articlesFeed : GGArticles?
     private var downloader : Downloader?
     
-    var category : GGCategory?
+    private var category : GGCategory?
     
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.category = GGCategories.getCategoryByName("Global")
-        downloader = Downloader(categorie: category!)
-        downloader?.download({ (feed, error) -> Void in
-            if error != nil {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var alert = UIAlertController(title: "Une erreur est survenue", message: error, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                })
-            } else {
-                self.articlesFeed = feed
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
-                })
-            }
-        })
-        
-        /*self.navigationController?.navigationBar.barTintColor = UIColor(netHex: 0x1D1D1D)
-        self.navigationController?.navigationBar.tintColor = category?.color
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : category!.color]*/
-        
-        self.navigationController?.navigationItem.title = (self.category?.name == "Global") ? "Gamergen" : self.category!.name
-        self.navigationController?.navigationBar.barTintColor = category?.color
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        initializeFeed()
             
         self.navigationController?.popViewControllerAnimated(true)
         // Uncomment the following line to preserve selection between presentations
@@ -116,6 +94,38 @@ class ArticlesFeedController: UITableViewController {
     }
     */
     
+    internal func changeCategory(cat : GGCategory) {
+        self.category = cat
+        initializeFeed()
+    }
+    
+    private func initializeFeed() {
+        downloader = Downloader(categorie: category!)
+        downloader?.download({ (feed, error) -> Void in
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    var alert = UIAlertController(title: "Une erreur est survenue", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
+            } else {
+                self.articlesFeed = feed
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                    self.tableView.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: true)
+                })
+            }
+        })
+        
+        /*self.navigationController?.navigationBar.barTintColor = UIColor(netHex: 0x1D1D1D)
+        self.navigationController?.navigationBar.tintColor = category?.color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : category!.color]*/
+        
+        navigationTitle.title = (self.category?.name == "Global") ? "Gamergen" : self.category!.name
+        self.navigationController?.navigationBar.barTintColor = category?.color
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+    }
     
     // MARK: - Navigation
     
@@ -137,6 +147,7 @@ class ArticlesFeedController: UITableViewController {
             popoverViewController.popoverPresentationController!.delegate = popoverViewController
             
             popoverViewController.CurrentCategory = category
+            popoverViewController.articleFeed = self
         }
     }
 }

@@ -25,6 +25,8 @@ class PlatformSelectorCollectionViewController: UICollectionViewController, UIPo
         }
     }
     
+    weak var articleFeed : ArticlesFeedController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -111,11 +113,10 @@ class PlatformSelectorCollectionViewController: UICollectionViewController, UIPo
     private func goBack() {
         
         var tmpController :UIViewController! = self.presentingViewController;
+        articleFeed?.changeCategory(currentCategory!)
         
         self.dismissViewControllerAnimated(false, completion: {()->Void in
-            
-            tmpController.dismissViewControllerAnimated(false, completion: nil);
+            self.articleFeed = nil
         });
-
     }
 }
