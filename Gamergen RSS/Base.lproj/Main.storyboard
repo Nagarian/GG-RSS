@@ -111,7 +111,6 @@
         <!--Platform Selector-->
         <scene sceneID="Tgy-W1-VR0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jy3-bC-Og7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController modalPresentationStyle="currentContext" id="Fj1-hq-jjQ" userLabel="Platform Selector" customClass="PlatformSelectorCollectionViewController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" alpha="0.49999999999999961" contentMode="scaleToFill" dataMode="prototypes" id="snT-Tb-2sE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
@@ -131,15 +130,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="72" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ps4" translatesAutoresizingMaskIntoConstraints="NO" id="UOF-eh-KVo">
+                                            <rect key="frame" x="8" y="0.0" width="57" height="48"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-Dj-gb4">
                                             <rect key="frame" x="1" y="45" width="70" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ps4" translatesAutoresizingMaskIntoConstraints="NO" id="UOF-eh-KVo">
-                                            <rect key="frame" x="8" y="0.0" width="57" height="48"/>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -161,7 +160,7 @@
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="Fj1-hq-jjQ" id="16H-Ca-cug"/>
-                            <outlet property="delegate" destination="Fj1-hq-jjQ" id="Tek-Dv-w5A"/>
+                            <outlet property="delegate" destination="Fj1-hq-jjQ" id="U5e-au-nH3"/>
                         </connections>
                     </collectionView>
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="400"/>
@@ -169,6 +168,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="400"/>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jy3-bC-Og7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-422" y="799"/>
         </scene>

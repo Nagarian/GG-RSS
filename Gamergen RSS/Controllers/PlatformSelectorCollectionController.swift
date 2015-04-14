@@ -10,10 +10,10 @@ import UIKit
 
 let reuseIdentifier = "PlatformSelectorIdentifier"
 
-class PlatformSelectorCollectionViewController: UICollectionViewController, UIPopoverPresentationControllerDelegate {
-    @IBOutlet weak var currentCategoryLabel: UILabel!
-
+class PlatformSelectorCollectionViewController: UICollectionViewController, UIPopoverPresentationControllerDelegate, UICollectionViewDelegate {
+    
     private var currentCategory : GGCategory?
+    private var currentCategoryCell : CategoryCollectionViewCell?
     
     internal var CurrentCategory : GGCategory? {
         get {
@@ -21,7 +21,8 @@ class PlatformSelectorCollectionViewController: UICollectionViewController, UIPo
         }
         
         set(value) {
-            self.currentCategory = value        }
+            self.currentCategory = value
+        }
     }
     
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class PlatformSelectorCollectionViewController: UICollectionViewController, UIPo
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -71,7 +72,12 @@ class PlatformSelectorCollectionViewController: UICollectionViewController, UIPo
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlatformCell", forIndexPath: indexPath) as! CategoryCollectionViewCell
         cell.Category = GGCategories.array[indexPath.item]
-        cell.isSelected(cell.Category?.tag == self.currentCategory?.tag)
+        
+        var bool = cell.Category?.tag == self.currentCategory?.tag
+        cell.isSelected(bool)
+        if bool {
+            currentCategoryCell = cell
+        }
         
         // Configure the cell
     
@@ -86,27 +92,30 @@ class PlatformSelectorCollectionViewController: UICollectionViewController, UIPo
         return true
     }
     */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
-    }
-    */
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var currentCell = collectionView.cellForItemAtIndexPath(indexPath) as! CategoryCollectionViewCell
 
+        if currentCell.Category?.tag != currentCategory?.tag {
+            currentCell.isSelected(true)
+            if currentCategoryCell != nil {
+                currentCategoryCell?.isSelected(false)
+            }
+            
+            self.currentCategoryCell = currentCell
+            self.currentCategory = currentCell.Category
+            goBack()
+        }
+    }
+    
+    private func goBack() {
+        
+        var tmpController :UIViewController! = self.presentingViewController;
+        
+        self.dismissViewControllerAnimated(false, completion: {()->Void in
+            
+            tmpController.dismissViewControllerAnimated(false, completion: nil);
+        });
+
+    }
 }

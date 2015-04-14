@@ -30,6 +30,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             self.titleLabel.textColor = UIColor.whiteColor()
             self.imageElement.tintColor = UIColor.whiteColor()
             self.backgroundColor = self.category!.color
+        } else {
+            self.titleLabel.textColor = self.category!.color
+            self.imageElement.tintColor = self.category!.color
+            self.backgroundColor = nil
         }
     }
     
