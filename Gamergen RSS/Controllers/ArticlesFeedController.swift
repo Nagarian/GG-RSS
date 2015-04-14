@@ -40,6 +40,7 @@ class ArticlesFeedController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = category?.color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : category!.color]*/
         
+        self.navigationController?.navigationItem.title = (self.category?.name == "Global") ? "Gamergen" : self.category!.name
         self.navigationController?.navigationBar.barTintColor = category?.color
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -128,6 +129,14 @@ class ArticlesFeedController: UITableViewController {
             let destinationVC = segue.destinationViewController as! DetailArticleViewController
             
             destinationVC.Article = argument.Article
+        }
+        
+        if segue.identifier == "PopPlateformSelector" {
+            let popoverViewController = segue.destinationViewController as! PlatformSelectorCollectionViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            popoverViewController.popoverPresentationController!.delegate = popoverViewController
+            
+            popoverViewController.CurrentCategory = category
         }
     }
 }

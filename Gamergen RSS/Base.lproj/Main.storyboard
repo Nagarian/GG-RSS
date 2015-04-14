@@ -74,6 +74,11 @@
                                         <constraint firstItem="FXd-ic-8g4" firstAttribute="top" secondItem="C4T-9H-GgY" secondAttribute="top" id="tKr-TY-xr2"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="FXd-ic-8g4" secondAttribute="trailing" constant="-63" id="zuu-7d-P87"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="6kH-bT-53d"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="FXd-ic-8g4" id="r0m-LQ-7zJ"/>
@@ -90,17 +95,87 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Gamergen" id="FW0-Sw-ZsI">
-                        <barButtonItem key="rightBarButtonItem" image="global" id="fuw-C4-Dqk"/>
+                        <barButtonItem key="rightBarButtonItem" image="global" id="fuw-C4-Dqk">
+                            <connections>
+                                <segue destination="Fj1-hq-jjQ" kind="popoverPresentation" identifier="PopPlateformSelector" popoverAnchorBarButtonItem="fuw-C4-Dqk" id="rEg-KF-mEz">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nzv-0u-m1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-422" y="220"/>
         </scene>
-        <!--Detail Article View Controller-->
+        <!--Platform Selector-->
+        <scene sceneID="Tgy-W1-VR0">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jy3-bC-Og7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <collectionViewController modalPresentationStyle="currentContext" id="Fj1-hq-jjQ" userLabel="Platform Selector" customClass="PlatformSelectorCollectionViewController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" alpha="0.49999999999999961" contentMode="scaleToFill" dataMode="prototypes" id="snT-Tb-2sE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="0.27000000000000002" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Frb-SY-9IS">
+                            <size key="itemSize" width="72" height="75"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlatformCell" id="vZb-l0-Lqd" customClass="CategoryCollectionViewCell" customModule="Gamergen_RSS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="75"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-Dj-gb4">
+                                            <rect key="frame" x="1" y="45" width="70" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ps4" translatesAutoresizingMaskIntoConstraints="NO" id="UOF-eh-KVo">
+                                            <rect key="frame" x="8" y="0.0" width="57" height="48"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Hvc-Dj-gb4" secondAttribute="bottom" id="6PL-DH-HN0"/>
+                                    <constraint firstItem="Hvc-Dj-gb4" firstAttribute="centerX" secondItem="UOF-eh-KVo" secondAttribute="centerX" id="F7m-Wf-7Fd"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="UOF-eh-KVo" secondAttribute="bottom" constant="19" id="MGd-T3-MSF"/>
+                                    <constraint firstItem="UOF-eh-KVo" firstAttribute="centerX" secondItem="vZb-l0-Lqd" secondAttribute="centerX" id="NNz-T2-k0m"/>
+                                    <constraint firstItem="UOF-eh-KVo" firstAttribute="leading" secondItem="vZb-l0-Lqd" secondAttribute="leadingMargin" id="ZYz-Lb-0AC"/>
+                                    <constraint firstItem="Hvc-Dj-gb4" firstAttribute="leading" secondItem="vZb-l0-Lqd" secondAttribute="leadingMargin" constant="-7" id="fbr-WU-II1"/>
+                                    <constraint firstItem="Hvc-Dj-gb4" firstAttribute="top" secondItem="vZb-l0-Lqd" secondAttribute="topMargin" constant="37" id="lXR-Ta-xmu"/>
+                                    <constraint firstItem="UOF-eh-KVo" firstAttribute="top" secondItem="vZb-l0-Lqd" secondAttribute="top" id="v3L-bU-xjb"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageElement" destination="UOF-eh-KVo" id="Elu-bF-fZs"/>
+                                    <outlet property="titleLabel" destination="Hvc-Dj-gb4" id="ZsI-qs-0aN"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Fj1-hq-jjQ" id="16H-Ca-cug"/>
+                            <outlet property="delegate" destination="Fj1-hq-jjQ" id="Tek-Dv-w5A"/>
+                        </connections>
+                    </collectionView>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="400"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="400"/>
+                </collectionViewController>
+            </objects>
+            <point key="canvasLocation" x="-422" y="799"/>
+        </scene>
+        <!--Detail Article-->
         <scene sceneID="YNB-AD-ZV1">
             <objects>
-                <viewController id="1Uz-ve-O9l" customClass="DetailArticleViewController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1Uz-ve-O9l" userLabel="Detail Article" customClass="DetailArticleViewController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5AR-fK-3Ig"/>
                         <viewControllerLayoutGuide type="bottom" id="2VU-yB-6wI"/>
@@ -153,5 +228,6 @@
     </scenes>
     <resources>
         <image name="global" width="32" height="30"/>
+        <image name="ps4" width="34" height="30"/>
     </resources>
 </document>
