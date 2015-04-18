@@ -8,12 +8,13 @@
 
 import Foundation
 
-struct GGArticles {
-    var feed : [GGArticle]
-    let title : String
-    let category : GGCategory
+// Classe décrivant le flux RSS
+public class GGArticles {
+    public var feed : [GGArticle] // liste des articles
+    public let title : String // titre du flux actuel
+    public let category : GGCategory // catégorie du flux actuel
     
-    init(title : String, category : GGCategory) {
+    public init(title : String, category : GGCategory) {
         self.feed = [GGArticle]()
         self.title = title
         self.category = category

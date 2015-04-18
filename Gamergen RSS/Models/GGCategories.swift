@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-struct GGCategories {
-    static var array = [
+// Cette structure sert de "base de données" concernant les catégories disponibles au sein de l'application
+public struct GGCategories {
+    public static var array = [
         GGCategory(name: "Global", tag: "global", color: UIColor(netHex:0xEC2F2F)),
         GGCategory(name: "PS4", tag: "ps4", color: UIColor(netHex:0x8888FF)),
         GGCategory(name: "XBox One", tag: "xbox-one", color: UIColor(netHex:0x44BB44)),
@@ -27,13 +28,15 @@ struct GGCategories {
         GGCategory(name: "iOS", tag: "ios", color: UIColor(netHex:0x77AAEE)),
         GGCategory(name: "Windows Phone", tag: "windows-phone", color: UIColor(netHex:0x8888EE))]
     
-    static func getCategoryByName(value : String) -> GGCategory? {
+    // Cette méthode sert à récupérer la catégorie correpondant au nom passé en paramètre
+    public static func getCategoryByName(value : String) -> GGCategory? {
         return GGCategories.array.filter({ (cat) -> Bool in
             cat.name.localizedCaseInsensitiveCompare(value) == NSComparisonResult.OrderedSame
         }).first
     }
     
-    static func getCategoryByTag(value : String) -> GGCategory? {
+    // Cette méthode sert à récupérer la catégorie correspondant au tag passé en paramètre
+    public static func getCategoryByTag(value : String) -> GGCategory? {
         return GGCategories.array.filter({ (cat) -> Bool in
             cat.tag.localizedCaseInsensitiveCompare(value) == NSComparisonResult.OrderedSame
         }).first

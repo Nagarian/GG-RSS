@@ -8,21 +8,11 @@
 
 import Foundation
 
-struct GGArticle {
-    var title : String
-    var link : NSURL
-    var description : String
-    var publicationDate : String
-    var imagePath : NSURL
+// Cette structure sert à définir un article au sein de l'application (permet d'avoir une meilleure abstraction du flux RSS)
+public struct GGArticle {
+    public let title : String // titre de l'article
+    public let link : NSURL // lien menant à l'article
+    public let description : String // description de l'article (résumé)
+    public let publicationDate : String // date de publication de l'article
+    public let imagePath : NSURL // lien de l'image accompagnant l'article
 }
-
-
-/*
-title
-link
-guid
-description
-pubdate
-enclosure <- image
-media:content <- image
-*/
