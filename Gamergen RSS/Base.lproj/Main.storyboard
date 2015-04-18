@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OTG-jN-sup">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OTG-jN-sup">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -8,13 +8,13 @@
         <!--Gamergen RSS-->
         <scene sceneID="yYG-H6-NRx">
             <objects>
-                <tableViewController title="Gamergen RSS" id="1Rn-aW-fVE" customClass="ArticlesFeedController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Gamergen RSS" id="1Rn-aW-fVE" customClass="ArticlesFeedViewController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Io-oW-4bb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCustomCellGG" rowHeight="126" id="OMR-bX-97X" customClass="ArticleTableViewCell" customModule="Gamergen_RSS" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCustomCellGG" rowHeight="126" id="OMR-bX-97X" customClass="ArticleViewCell" customModule="Gamergen_RSS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OMR-bX-97X" id="x2V-cc-hjI">
@@ -47,7 +47,7 @@
                                                 <constraint firstAttribute="width" constant="449" id="lFp-6t-mIb"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -114,7 +114,7 @@
         <!--Platform Selector-->
         <scene sceneID="Tgy-W1-VR0">
             <objects>
-                <collectionViewController modalPresentationStyle="currentContext" id="Fj1-hq-jjQ" userLabel="Platform Selector" customClass="PlatformSelectorCollectionViewController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController modalPresentationStyle="currentContext" id="Fj1-hq-jjQ" userLabel="Platform Selector" customClass="PlatformSelectorViewController" customModule="Gamergen_RSS" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" alpha="0.49999999999999961" contentMode="scaleToFill" dataMode="prototypes" id="snT-Tb-2sE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +126,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlatformCell" id="vZb-l0-Lqd" customClass="CategoryCollectionViewCell" customModule="Gamergen_RSS" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlatformCell" id="vZb-l0-Lqd" customClass="CategoryViewCell" customModule="Gamergen_RSS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
