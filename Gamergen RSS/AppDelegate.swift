@@ -16,9 +16,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         return true
     }
 
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+       
+        var category : GGCategory?
+        
+        // on récupère la catégorie a comptabiliser
+        if let savedCategory = defaults.objectForKey("category") as? String {
+            category = GGCategories.getCategoryByTag(savedCategory)
+        } else {
+            category = GGCategories.getCategoryByName("Global")
+        }
+        
+        var downloader = Downloader(categorie: category!)
+        downloader.download({ (feed, error) -> Void in
+            if error == nil {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    var badgeCount = 0
+                    
+                    // on compte le nombre d'article jusqu'au dernier lu (max 20 à priori)
+                    if let lastArticleReadUrl = NSUserDefaults.standardUserDefaults().objectForKey("lastArticleRead") as? String {
+                        for article in feed!.feed {
+                            if article.link.absoluteString == lastArticleReadUrl {
+                                break
+                            } else {
+                                badgeCount++
+                            }
+                        }
+                    }
+                    
+                    // on met à jour le badge de l'application
+                    UIApplication.sharedApplication().applicationIconBadgeNumber = badgeCount
+                    completionHandler(UIBackgroundFetchResult.NewData)
+                })
+                
+            } else {
+                completionHandler(UIBackgroundFetchResult.Failed)
+            }
+        })
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

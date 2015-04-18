@@ -23,7 +23,7 @@ class ArticlesFeedController: UITableViewController {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
         if let savedCategory = defaults.objectForKey("category") as? String {
-            self.category = GGCategories.getCategoryByTag(defaults.objectForKey("category") as! String)
+            self.category = GGCategories.getCategoryByTag(savedCategory)
         } else {
             self.category = GGCategories.getCategoryByName("Global")
         }
@@ -127,7 +127,7 @@ class ArticlesFeedController: UITableViewController {
                     self.tableView.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: true)
                     
                     var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                    defaults.setObject(NSDate(), forKey: "lastArticleRead")
+                    defaults.setObject(self.articlesFeed?.feed.first?.link.absoluteString, forKey: "lastArticleRead")
                     defaults.synchronize()
                 })
             }
