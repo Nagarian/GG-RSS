@@ -20,7 +20,14 @@ class ArticlesFeedController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.category = GGCategories.getCategoryByName("Global")
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let savedCategory = defaults.objectForKey("category") as? String {
+            self.category = GGCategories.getCategoryByTag(defaults.objectForKey("category") as! String)
+        } else {
+            self.category = GGCategories.getCategoryByName("Global")
+        }
+        
         initializeFeed()
             
         self.navigationController?.popViewControllerAnimated(true)
@@ -97,6 +104,11 @@ class ArticlesFeedController: UITableViewController {
     internal func changeCategory(cat : GGCategory) {
         self.category = cat
         initializeFeed()
+
+        // Sauvegarde de la catégorie actuelle pour la prochaine réouverture de l'application
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(self.category!.tag, forKey: "category")
+        defaults.synchronize()
     }
     
     private func initializeFeed() {
@@ -113,6 +125,10 @@ class ArticlesFeedController: UITableViewController {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
                     self.tableView.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: true)
+                    
+                    var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                    defaults.setObject(NSDate(), forKey: "lastArticleRead")
+                    defaults.synchronize()
                 })
             }
         })
