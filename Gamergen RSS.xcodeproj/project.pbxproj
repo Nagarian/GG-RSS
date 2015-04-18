@@ -54,7 +54,7 @@
 		8B623C131AD067B500C1CEDC /* Gamergen RSSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gamergen RSSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B623C181AD067B500C1CEDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B623C191AD067B500C1CEDC /* Gamergen_RSSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamergen_RSSTests.swift; sourceTree = "<group>"; };
-		8B623C261AD06DAC00C1CEDC /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Downloader.swift; path = Connector/Downloader.swift; sourceTree = "<group>"; };
+		8B623C261AD06DAC00C1CEDC /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		8B623C281AD0765800C1CEDC /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8B623C2A1AD0769700C1CEDC /* GGCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GGCategories.swift; sourceTree = "<group>"; };
 		8B623C2C1AD0772900C1CEDC /* GGCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GGCategory.swift; sourceTree = "<group>"; };
