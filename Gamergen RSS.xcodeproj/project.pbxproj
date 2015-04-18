@@ -150,14 +150,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8B623C231AD0697600C1CEDC /* Connector */ = {
-			isa = PBXGroup;
-			children = (
-				8B623C261AD06DAC00C1CEDC /* Downloader.swift */,
-			);
-			name = Connector;
-			sourceTree = "<group>";
-		};
 		8B623C2F1AD0A39800C1CEDC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +175,7 @@
 		8B623C321AD0A41800C1CEDC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				8B623C231AD0697600C1CEDC /* Connector */,
+				8B623C261AD06DAC00C1CEDC /* Downloader.swift */,
 				8B623C281AD0765800C1CEDC /* Extension.swift */,
 			);
 			path = Utils;

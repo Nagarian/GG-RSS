@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    // Point d'entrée de l'application de l'activation en background fetch permettant de mettre à jour le badge de l'application
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
