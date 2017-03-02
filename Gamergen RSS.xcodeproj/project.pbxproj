@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		476659DC381C6739DEA12611 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0AD7A91ADBA77700AD103F /* DetailArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailArticleViewController.swift; sourceTree = "<group>"; };
 		8B334E9A1ADD028000DC027C /* PlatformSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformSelectorViewController.swift; sourceTree = "<group>"; };
 		8B334E9C1ADD060900DC027C /* CategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryViewCell.swift; path = Cell/CategoryViewCell.swift; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 		AAA1575F9525713DEED2424A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				476659DC381C6739DEA12611 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -232,7 +230,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = Nagarian47;
+				ORGANIZATIONNAME = Nagarian;
 				TargetAttributes = {
 					8B623BFD1AD067B500C1CEDC = {
 						CreatedOnToolsVersion = 6.2;
@@ -251,7 +249,7 @@
 				};
 			};
 			buildConfigurationList = 8B623BF91AD067B500C1CEDC /* Build configuration list for PBXProject "Gamergen RSS" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (

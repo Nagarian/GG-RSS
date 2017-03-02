@@ -49,6 +49,8 @@ internal class ArticleViewCell: UITableViewCell {
         self.titleLabel.text = self.article!.title
         self.descriptionLabel.text = self.article?.description
         self.dateLabel.text = self.article?.publicationDate
-        self.imageElement.image = UIImage(data: try! Data(contentsOf: self.article!.imagePath as URL))
+        if let d = try? Data(contentsOf: self.article!.imagePath as URL) {
+            self.imageElement.image = UIImage(data: d)
+        }
     }
 }
