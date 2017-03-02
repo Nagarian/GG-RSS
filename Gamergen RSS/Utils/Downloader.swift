@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import SWXMLHash
 
 // Classe s'occupant de télécharger les flux RSS en provenance de Gamergen
 internal class Downloader {
-    private let request : NSURLRequest
+    private let request : URLRequest
     private let category: GGCategory
     
     internal init (categorie : GGCategory) {
-        var uri = "http://www.gamergen.com/rss"
+        var uri = "https://www.gamergen.com/rss"
         if (categorie.name != "Global") {
             uri += "/" + categorie.tag
         }
@@ -37,15 +36,15 @@ internal class Downloader {
             // Ceci provient de la librairie externe importé avec cocoapods
             let xml = SWXMLHash.parse(data)
             
-            var articles = GGArticles(title: xml["rss"]["channel"]["title"].element!.text!, category : self.category)
+            let articles = GGArticles(title: xml["rss"]["channel"]["title"].element!.text!, category : self.category)
             
             for item in xml["rss"]["channel"]["item"] {
                 articles.feed.append(GGArticle(
                     title : item["title"].element!.text!,
-                    link : NSURL(string: item["link"].element!.text!)!,
+                    link : URL(string: item["link"].element!.text!)!,
                     description : item["description"].element!.text!,
                     publicationDate : item["pubDate"].element!.text!,
-                    imagePath : NSURL(string: item["enclosure"].element!.attributes["url"]!)!))
+                    imagePath : URL(string: (item["enclosure"].element!.attribute(by: "url")?.text)!)!))
             }
             
             callback(articles, nil)

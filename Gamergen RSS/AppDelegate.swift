@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Point d'entrée de l'application de l'activation en background fetch permettant de mettre à jour le badge de l'application
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
-        var defaults: UserDefaults = UserDefaults.standard
+        let defaults: UserDefaults = UserDefaults.standard
        
         var category : GGCategory?
         
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             category = GGCategories.getCategoryByName("Global")
         }
         
-        var downloader = Downloader(categorie: category!)
+        let downloader = Downloader(categorie: category!)
         downloader.download({ (feed, error) -> Void in
             if error == nil {
                 DispatchQueue.main.async(execute: { () -> Void in
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             if article.link.absoluteString == lastArticleReadUrl {
                                 break
                             } else {
-                                badgeCount++
+                                badgeCount += 1
                             }
                         }
                     }

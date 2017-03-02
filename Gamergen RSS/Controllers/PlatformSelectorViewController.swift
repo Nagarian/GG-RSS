@@ -10,7 +10,7 @@ import UIKit
 
 let reuseIdentifier = "PlatformSelectorIdentifier"
 
-internal class PlatformSelectorViewController: UICollectionViewController, UIPopoverPresentationControllerDelegate, UICollectionViewDelegate {
+internal class PlatformSelectorViewController: UICollectionViewController, UIPopoverPresentationControllerDelegate {
     
     private var currentCategory : GGCategory? // categorie sélectionnée
     private var currentCategoryCell : CategoryViewCell? // cellule sélectionnée
@@ -51,7 +51,7 @@ internal class PlatformSelectorViewController: UICollectionViewController, UIPop
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlatformCell", for: indexPath) as! CategoryViewCell
         cell.Category = GGCategories.array[indexPath.item]
         
-        var bool = cell.Category?.tag == self.currentCategory?.tag
+        let bool = cell.Category?.tag == self.currentCategory?.tag
         cell.isSelected(bool)
         if bool {
             currentCategoryCell = cell
@@ -62,7 +62,7 @@ internal class PlatformSelectorViewController: UICollectionViewController, UIPop
 
     // Méthode changeant la catégorie sélectionnée
     internal override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var currentCell = collectionView.cellForItem(at: indexPath) as! CategoryViewCell
+        let currentCell = collectionView.cellForItem(at: indexPath) as! CategoryViewCell
 
         if currentCell.Category?.tag != currentCategory?.tag {
             currentCell.isSelected(true)
@@ -78,7 +78,6 @@ internal class PlatformSelectorViewController: UICollectionViewController, UIPop
     
     // Méthode permettant de fermer popup (cette vue-ci)
     private func goBack() {
-        var tmpController :UIViewController! = self.presentingViewController;
         self.articleFeedController?.changeCategory(currentCategory!)
         
         self.dismiss(animated: false, completion: {()->Void in

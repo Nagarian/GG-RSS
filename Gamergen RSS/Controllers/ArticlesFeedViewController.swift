@@ -23,7 +23,7 @@ internal class ArticlesFeedViewController: UITableViewController {
         Downloader(categorie: category!).download({ (feed, error) -> Void in
             if error != nil {
                 DispatchQueue.main.async(execute: { () -> Void in
-                    var alert = UIAlertController(title: "Une erreur est survenue", message: error, preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "Une erreur est survenue", message: error, preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 })
@@ -33,7 +33,7 @@ internal class ArticlesFeedViewController: UITableViewController {
                     self.tableView.reloadData()
                     self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
                     
-                    var defaults: UserDefaults = UserDefaults.standard
+                    let defaults: UserDefaults = UserDefaults.standard
                     defaults.set(self.articlesFeed?.feed.first?.link.absoluteString, forKey: "lastArticleRead")
                     defaults.synchronize()
                 })
@@ -67,7 +67,7 @@ internal class ArticlesFeedViewController: UITableViewController {
         super.viewDidLoad()
         
         // récupération de la catégorie lors de la précédente session
-        var defaults: UserDefaults = UserDefaults.standard
+        let defaults: UserDefaults = UserDefaults.standard
         
         if let savedCategory = defaults.object(forKey: "category") as? String {
             self.category = GGCategories.getCategoryByTag(savedCategory)
@@ -78,7 +78,7 @@ internal class ArticlesFeedViewController: UITableViewController {
         // initilisation de la liste d'article
         initializeFeed()
             
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     // Méthode retournant le nombre d'éléments dans le tableView
