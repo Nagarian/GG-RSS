@@ -33,22 +33,22 @@ internal class PlatformSelectorViewController: UICollectionViewController, UIPop
     internal override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     // Méthode permettant d'activer le mode popup sur iPhone
-    internal func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    internal func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 
     // Méthode retournant le nombre d'éléments dans le tableView
-    internal override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    internal override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return GGCategories.array.count
     }
 
     // Méthode initialisant chacune des celules à partir de l'élément lié
-    internal override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlatformCell", forIndexPath: indexPath) as! CategoryViewCell
+    internal override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlatformCell", for: indexPath) as! CategoryViewCell
         cell.Category = GGCategories.array[indexPath.item]
         
         var bool = cell.Category?.tag == self.currentCategory?.tag
@@ -61,8 +61,8 @@ internal class PlatformSelectorViewController: UICollectionViewController, UIPop
     }
 
     // Méthode changeant la catégorie sélectionnée
-    internal override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var currentCell = collectionView.cellForItemAtIndexPath(indexPath) as! CategoryViewCell
+    internal override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var currentCell = collectionView.cellForItem(at: indexPath) as! CategoryViewCell
 
         if currentCell.Category?.tag != currentCategory?.tag {
             currentCell.isSelected(true)
@@ -81,7 +81,7 @@ internal class PlatformSelectorViewController: UICollectionViewController, UIPop
         var tmpController :UIViewController! = self.presentingViewController;
         self.articleFeedController?.changeCategory(currentCategory!)
         
-        self.dismissViewControllerAnimated(false, completion: {()->Void in
+        self.dismiss(animated: false, completion: {()->Void in
             self.articleFeedController = nil
         });
     }

@@ -31,7 +31,7 @@ internal class DetailArticleViewController: UIViewController {
         super.viewDidLoad()
         
         if article != nil {
-            webView.loadRequest(NSURLRequest(URL: self.article!.link))
+            webView.loadRequest(URLRequest(url: self.article!.link as URL))
             self.title = self.article?.title
         }
     }

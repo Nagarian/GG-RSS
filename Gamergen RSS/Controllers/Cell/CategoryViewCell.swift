@@ -35,15 +35,15 @@ internal class CategoryViewCell: UICollectionViewCell {
     private func initialize() {
         self.titleLabel.text = self.category!.name
         self.titleLabel.textColor = self.category!.color
-        self.imageElement.image =  UIImage(named: self.category!.tag)?.imageWithRenderingMode(.AlwaysTemplate)
+        self.imageElement.image =  UIImage(named: self.category!.tag)?.withRenderingMode(.alwaysTemplate)
         self.imageElement.tintColor = self.category!.color
     }
     
     // Méthode permettant de switcher l'état de la cellule pour montrer laquelle est sélectionnée
-    internal func isSelected(value: Bool) {
+    internal func isSelected(_ value: Bool) {
         if value {
-            self.titleLabel.textColor = UIColor.whiteColor()
-            self.imageElement.tintColor = UIColor.whiteColor()
+            self.titleLabel.textColor = UIColor.white
+            self.imageElement.tintColor = UIColor.white
             self.backgroundColor = self.category!.color
         } else {
             self.titleLabel.textColor = self.category!.color

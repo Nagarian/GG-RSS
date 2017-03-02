@@ -29,16 +29,16 @@ public struct GGCategories {
         GGCategory(name: "Windows Phone", tag: "windows-phone", color: UIColor(netHex:0x8888EE))]
     
     // Cette méthode sert à récupérer la catégorie correpondant au nom passé en paramètre
-    public static func getCategoryByName(value : String) -> GGCategory? {
+    public static func getCategoryByName(_ value : String) -> GGCategory? {
         return GGCategories.array.filter({ (cat) -> Bool in
-            cat.name.localizedCaseInsensitiveCompare(value) == NSComparisonResult.OrderedSame
+            cat.name.localizedCaseInsensitiveCompare(value) == ComparisonResult.orderedSame
         }).first
     }
     
     // Cette méthode sert à récupérer la catégorie correspondant au tag passé en paramètre
-    public static func getCategoryByTag(value : String) -> GGCategory? {
+    public static func getCategoryByTag(_ value : String) -> GGCategory? {
         return GGCategories.array.filter({ (cat) -> Bool in
-            cat.tag.localizedCaseInsensitiveCompare(value) == NSComparisonResult.OrderedSame
+            cat.tag.localizedCaseInsensitiveCompare(value) == ComparisonResult.orderedSame
         }).first
     }
 }

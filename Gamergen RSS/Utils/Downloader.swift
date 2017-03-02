@@ -20,14 +20,14 @@ internal class Downloader {
             uri += "/" + categorie.tag
         }
         
-        request = NSURLRequest(URL: NSURL(string: uri)!)
+        request = URLRequest(url: URL(string: uri)!)
         self.category = categorie
     }
     
     // Méthode téléchargeant le flux correspond à la catégorie défini au sein de la classe, la méthode callback prend en arguments :
     // - data : GGCategories contenant le flux RSS parser et traiter
     // - error : String donnant les détails si une erreur s'est produite
-    internal func download(callback: (GGArticles?, String?) -> Void) {
+    internal func download(_ callback: @escaping (GGArticles?, String?) -> Void) {
         httpGet(request, callback: {(data, error) in
             if error != nil {
                 callback(nil, error)
@@ -53,18 +53,18 @@ internal class Downloader {
     }
     
     // Méthode trouvée sur internet :-)
-    private func httpGet(request: NSURLRequest!, callback: (String, String?) -> Void) {
-        var session = NSURLSession.sharedSession()
-        var task = session.dataTaskWithRequest(request){
+    private func httpGet(_ request: URLRequest!, callback: @escaping (String, String?) -> Void) {
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) -> Void in
             if error != nil {
-                callback("", error.localizedDescription)
+                callback("", error?.localizedDescription)
             } else {
-                var result = NSString(data: data, encoding:
-                    NSUTF8StringEncoding)!
+                let result = NSString(data: data!, encoding:
+                    String.Encoding.utf8.rawValue)!
                 callback(result as String, nil)
             }
-        }
+        })
         
         task.resume()
     }
